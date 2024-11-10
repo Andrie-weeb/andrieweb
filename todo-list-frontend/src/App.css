@@ -1,0 +1,46 @@
+/* Global styles for the app */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f7fafc; /* Light background */
+}
+
+h1 {
+  color: #2d3748; /* Dark text for title */
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+input:focus {
+  border-color: #3182ce; /* Blue border on focus for input */
+  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.5);
+}
+
+/* Additional effects for buttons */
+button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(66, 153, 225, 0.5);
+}
+
+/* Styling for the list items */
+li {
+  transition: all 0.3s ease;
+}
+
+li:hover {
+  background-color: rgba(100, 100, 100, 0.05);
+}
+
+input:focus {
+  border-color: #3182ce;
+  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.5);
+}

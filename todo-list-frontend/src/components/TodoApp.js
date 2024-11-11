@@ -124,49 +124,62 @@ function TodoApp() {
         </form>
 
         <ul className="space-y-3">
-          {todos.map((todo) => (
-            <li
-              key={todo._id}
-              className="flex items-center justify-between bg-gray-100 p-3 rounded-lg shadow-sm"
-            >
-              <div className="flex items-center space-x-3">
-                <input
-                  type="checkbox"
-                  checked={todo.completed}
-                  onChange={() => toggleComplete(todo._id)}
-                  className="form-checkbox h-5 w-5 text-orange-500"
-                />
-                {editId === todo._id ? (
-                  <input
-                    type="text"
-                    value={editingTitle}
-                    onChange={handleEditChange}
-                    onKeyPress={(e) => handleKeyPress(e, todo._id)}
-                    className="flex-1 p-1 border-b border-gray-400 focus:outline-none focus:border-indigo-500"
-                  />
-                ) : (
-                  <span className={`text-lg ${todo.completed ? 'line-through text-gray-400' : 'text-gray-800'}`}>
-                    {todo.title}
-                  </span>
-                )}
-              </div>
-              <div>
-                {editId === todo._id ? (
-                  <button onClick={() => updateTodo(todo._id)} className="text-blue-500 hover:text-blue-700 mr-2">
-                    Save
-                  </button>
-                ) : (
-                  <button onClick={() => handleEdit(todo)} className="text-blue-500 hover:text-blue-700 mr-2">
-                    Edit
-                  </button>
-                )}
-                <button onClick={() => deleteTodo(todo._id)} className="text-red-500 hover:text-red-700">
-                  ✕
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
+            {todos.length === 0 ? (
+              <p className="text-center text-gray-500">No Task for Today</p>
+            ) : (
+              todos.map((todo) => (
+                <li
+                  key={todo._id}
+                  className="flex items-center justify-between bg-gray-100 p-3 rounded-lg shadow-sm"
+                >
+                  <div className="flex items-center space-x-3">
+                    <input
+                      type="checkbox"
+                      checked={todo.completed}
+                      onChange={() => toggleComplete(todo._id)}
+                      className="form-checkbox h-5 w-5 text-orange-500"
+                    />
+                    {editId === todo._id ? (
+                      <input
+                        type="text"
+                        value={editingTitle}
+                        onChange={handleEditChange}
+                        onKeyPress={(e) => handleKeyPress(e, todo._id)}
+                        className="flex-1 p-1 border-b border-gray-400 focus:outline-none focus:border-indigo-500"
+                      />
+                    ) : (
+                      <div>
+                        <span className={`text-lg ${todo.completed ? 'line-through text-gray-400' : 'text-gray-800'}`}>
+                          {todo.title}
+                        </span>
+                        {/* Display the created date and time */}
+                        <div>
+                          <span className="text-gray-500 text-sm">
+                            Created: {new Date(todo.createdAt).toLocaleString("en-US", { timeZone: "Asia/Manila" })}
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    {editId === todo._id ? (
+                      <button onClick={() => updateTodo(todo._id)} className="text-blue-500 hover:text-blue-700 mr-2">
+                        Save
+                      </button>
+                    ) : (
+                      <button onClick={() => handleEdit(todo)} className="text-blue-500 hover:text-blue-700 mr-2">
+                        Edit
+                      </button>
+                    )}
+                    <button onClick={() => deleteTodo(todo._id)} className="text-red-500 hover:text-red-700">
+                      ✕
+                    </button>
+                  </div>
+                </li>
+              ))
+            )}
+          </ul>
+
 
         {/* Error Modal */}
         {errorMessage && (

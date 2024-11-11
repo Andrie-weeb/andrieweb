@@ -44,3 +44,10 @@ input:focus {
   border-color: #3182ce;
   box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.5);
 }
+
+/* Sidebar for deleted tasks */
+.fixed.left-0 {
+  z-index: 1000;
+  width: 250px;
+}
+
